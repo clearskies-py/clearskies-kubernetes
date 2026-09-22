@@ -31,7 +31,7 @@ class HelmRevisionBackend(HelmBackend):
         is_latest = False
         release_name = ""
         namespace = ""
-        name = ""
+        context = ""
         release_number = 0
         for condition in query.conditions:
             if condition.operator != "=":

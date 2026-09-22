@@ -69,13 +69,22 @@ class HelmReleaseBackend(HelmBackend):
             next_page_data={},
         )
 
-    async def deploy_async(self, name, namespace, chart_url, chart_name, values):
+    async def deploy_async(
+        self,
+        name: str,
+        namespace: str,
+        chart_url: str,
+        chart_name: str,
+        values: dict[str, Any],
+        version: str | None = None,
+    ) -> None:
         chart = await self.client.get_chart(
             chart_name,
             repo=chart_url,
+            version=version,
         )
 
-        response = await self.client.install_or_upgrade_release(
+        await self.client.install_or_upgrade_release(
             name,
             chart,
             values,

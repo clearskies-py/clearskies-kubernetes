@@ -5,6 +5,7 @@ from clearskies_kubernetes.backends import HelmRevisionBackend
 
 from . import helm_release_reference
 from .columns.from_helm_method import FromHelmMethod
+from .columns.from_metadata import FromMetadata
 
 
 class HelmRevision(clearskies.Model):
@@ -26,5 +27,6 @@ class HelmRevision(clearskies.Model):
     hooks = FromHelmMethod()
     resources = FromHelmMethod()
     values = FromHelmMethod()
+    app_version = FromMetadata()
 
     release = clearskies.columns.BelongsToModel("release_name")

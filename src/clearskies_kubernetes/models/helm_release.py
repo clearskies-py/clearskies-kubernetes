@@ -15,6 +15,12 @@ class HelmRelease(clearskies.Model):
     values = clearskies.columns.Json()
     chart_url = clearskies.columns.String()
     chart_name = clearskies.columns.String()
+    version = clearskies.columns.String()
+    latest_revision = clearskies.columns.HasOne(
+        helm_revision_reference.HelmRevisionReference,
+        foreign_column_name="release_name",
+        where=lambda model, parent: model.where(f"namespace={parent.namespace}").where("is_latest=1"),
+    )
     revisions = clearskies.columns.HasMany(
         helm_revision_reference.HelmRevisionReference,
         foreign_column_name="release_name",
