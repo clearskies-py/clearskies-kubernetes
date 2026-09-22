@@ -1,7 +1,7 @@
 [project]
 name = "clear-skies-kubernetes"
 description = "Kubernetes module for Clearskies"
-version = "0.9.1"
+version = "0.9.2"
 license = "MIT"
 readme = "./README.md"
 authors = [{name = "Conor Mancone", email = "cmancone@gmail.com"}]
